@@ -60,12 +60,21 @@ nav {
   height:68px;
   display:flex; align-items:center; justify-content:space-between;
   padding:0 5%;
-  background:rgba(244,250,255,0.90);
-  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
-  transition:box-shadow .3s;
+  transition:all .3s ease;
 }
-nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
+nav.scrolled {
+  top: 12px; left: 5%; right: 5%;
+  height: 64px;
+  padding: 0 30px;
+  background:rgba(244,250,255,0.85);
+  border:1.5px solid var(--border);
+  border-radius:50px;
+  box-shadow:0 12px 40px rgba(21,101,160,0.12);
+}
 
 .nav-logo {
   display:flex; align-items:center; gap:10px;
@@ -102,11 +111,14 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
   background:linear-gradient(135deg,var(--cool),var(--deep));
   color:#fff; border:none; border-radius:50px;
   font-family:'Nunito',sans-serif; font-size:0.88rem; font-weight:700;
-  cursor:pointer; transition:all .25s; text-decoration:none;
+  cursor:pointer; transition:all .25s ease; text-decoration:none;
   box-shadow:0 4px 14px rgba(56,182,232,0.38);
   display:inline-block;
 }
-.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(56,182,232,0.48); }
+.btn-primary:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(56,182,232,0.48);
+}
 
 .btn-lg { padding:14px 30px; font-size:1rem; }
 
@@ -115,11 +127,14 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 
 /* ── MOBILE MENU ── */
 .mobile-menu {
-  position:fixed; top:68px; left:0; right:0;
-  background:rgba(244,250,255,0.97); backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-  padding:20px 5%; z-index:999;
+  position:fixed; top:90px; left:5%; right:5%;
+  background:rgba(244,250,255,0.97); backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1.5px solid var(--border);
+  border-radius:24px;
+  padding:20px 24px; z-index:999;
   display:none; flex-direction:column; gap:10px;
+  box-shadow:0 12px 40px rgba(21,101,160,0.15);
 }
 .mobile-menu.open { display:flex; }
 .mobile-menu a {
@@ -127,6 +142,7 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
   text-decoration:none; padding:10px 0;
   border-bottom:1px solid var(--border);
 }
+.mobile-menu a:last-of-type { border-bottom:none; }
 
 /* ── HERO ── */
 .hero {
@@ -329,30 +345,37 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 
 /* ── SECTION LABELS ── */
 .section-label {
-  display:inline-flex; align-items:center; gap:8px;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
   font-size:0.76rem; font-weight:800; letter-spacing:.14em;
   text-transform:uppercase; color:var(--deep); margin-bottom:10px;
+  width:100%; text-align:center;
 }
 .section-label::before {
   content:''; width:18px; height:2.5px;
   background:linear-gradient(90deg,var(--cool),var(--deep)); border-radius:2px;
+}
+.section-label::after {
+  content:''; width:18px; height:2.5px;
+  background:linear-gradient(90deg,var(--deep),var(--cool)); border-radius:2px;
 }
 
 .section-title {
   font-size:clamp(1.75rem,3vw,2.5rem);
   font-weight:800; letter-spacing:-0.025em;
   color:var(--midnight); line-height:1.2; margin-bottom:14px;
+  text-align:center; width:100%;
 }
 .section-sub {
   font-size:1rem; color:var(--muted); line-height:1.68;
   max-width:540px; font-weight:500;
+  text-align:center; margin:0 auto 24px; width:100%;
 }
 
 /* ── SERVICES ── */
 .services { padding:90px 0; background:var(--white); }
 .services-header {
-  display:flex; justify-content:space-between; align-items:flex-end;
-  margin-bottom:48px; gap:20px; flex-wrap:wrap;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  margin-bottom:48px; gap:20px; width:100%;
 }
 
 .services-tabs {
@@ -376,9 +399,11 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 }
 
 .service-card {
-  background:var(--frost);
-  border:1.5px solid transparent; border-radius:var(--radius);
-  padding:32px 32px 36px; transition:all .32s cubic-bezier(.34,1.56,.64,1);
+  background:rgba(244,250,255,0.6);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1.5px solid var(--border); border-radius:var(--radius);
+  padding:32px 32px 36px; transition:all .4s cubic-bezier(.16,1,.3,1);
   cursor:default; position:relative; overflow:hidden;
   display:flex; flex-direction:column;
 }
@@ -389,8 +414,8 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
   pointer-events:none; z-index:1;
 }
 .service-card:hover {
-  transform:translateY(-5px); border-color:var(--sky);
-  box-shadow:var(--shadow-lg);
+  transform:translateY(-8px) scale(1.02); border-color:var(--cool);
+  box-shadow:0 20px 40px rgba(21,101,160,0.12);
 }
 .service-card:hover::after { opacity:1; }
 
@@ -498,9 +523,16 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 .appliance-card {
   border-radius:var(--radius); overflow:hidden;
   border:1.5px solid var(--border);
-  transition:all .3s;
+  background:rgba(244,250,255,0.6);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:all .4s cubic-bezier(.16,1,.3,1);
 }
-.appliance-card:hover { border-color:var(--cool); box-shadow:var(--shadow); transform:translateY(-4px); }
+.appliance-card:hover {
+  border-color:var(--cool);
+  box-shadow:0 15px 35px rgba(21,101,160,0.12);
+  transform:translateY(-8px) scale(1.02);
+}
 
 .app-img {
   width:100%; height:160px; object-fit:cover; display:block;
@@ -683,26 +715,53 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 
 /* ── GUARANTEES ── */
 .guarantees {
-  padding:80px 0; background:linear-gradient(180deg, var(--white) 0%, var(--frost) 100%); position:relative; z-index:2;
+  padding:90px 0; background:linear-gradient(180deg, var(--white) 0%, var(--ice) 100%); position:relative; z-index:2;
 }
 .guarantees-grid {
   display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:44px;
 }
 .guarantee-card {
-  background:var(--white); border:1.5px solid var(--border); border-radius:20px;
-  padding:32px 24px; text-align:center; transition:all 0.3s ease;
-  box-shadow:0 4px 16px rgba(21,101,160,0.03);
+  background:linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(244,250,255,0.5) 100%);
+  border:1.5px solid rgba(255, 255, 255, 0.7); border-radius:24px;
+  padding:36px 24px; text-align:center; transition:all 0.4s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 8px 32px rgba(21,101,160,0.03);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
 }
 .guarantee-card:hover {
-  transform:translateY(-5px); border-color:var(--cool);
-  box-shadow:var(--shadow-lg);
+  transform:translateY(-8px) scale(1.03); border-color:var(--cool);
+  background: var(--white);
+  box-shadow:0 20px 40px rgba(56,182,232,0.16);
 }
 .guarantee-icon {
-  width:60px; height:60px; background:linear-gradient(135deg, var(--sky), rgba(56,182,232,0.25));
-  border-radius:50%; display:grid; place-items:center; margin:0 auto 20px;
-  font-size:1.8rem; box-shadow:0 4px 12px rgba(56,182,232,0.2);
+  width:64px; height:64px;
+  border-radius:50%; display:grid; place-items:center; margin:0 auto 24px;
+  font-size:1.85rem;
+  transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.guarantee-card h3 { font-size:1.05rem; font-weight:800; color:var(--midnight); margin-bottom:10px; }
+.guarantees-grid .guarantee-card:nth-child(1) .guarantee-icon {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3);
+}
+.guarantees-grid .guarantee-card:nth-child(2) .guarantee-icon {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.3);
+}
+.guarantees-grid .guarantee-card:nth-child(3) .guarantee-icon {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
+}
+.guarantees-grid .guarantee-card:nth-child(4) .guarantee-icon {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.3);
+}
+.guarantee-card:hover .guarantee-icon {
+  transform: scale(1.15) rotate(12deg);
+}
+.guarantee-card h3 { font-size:1.1rem; font-weight:800; color:var(--midnight); margin-bottom:12px; }
 .guarantee-card p { font-size:0.86rem; color:var(--slate); line-height:1.6; }
 
 @media(max-width:1024px) {
@@ -752,7 +811,10 @@ nav.scrolled { box-shadow:0 4px 28px rgba(21,101,160,0.10); }
 /* ── FAQ ── */
 .faq { padding:90px 0; background:var(--frost); }
 .faq-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:72px; align-items:start; }
-.faq-left { position:sticky; top:90px; }
+.faq-left {
+  position:sticky; top:90px;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+}
 
 .faq-item { border-bottom:1px solid var(--border); }
 .faq-question {
@@ -876,7 +938,26 @@ footer {
   .contact-grid { grid-template-columns:1fr; gap:36px; }
 }
 @media(max-width:768px){
-  .hero { grid-template-columns:1fr; gap:32px; padding:90px 5% 56px; }
+  nav {
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    padding: 0 5%;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.scrolled {
+    top: 10px; left: 4%; right: 4%;
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+  }
+  .mobile-menu {
+    top: 72px;
+    left: 4%; right: 4%;
+  }
+  .hero { grid-template-columns:1fr; gap:32px; padding:120px 5% 56px; }
   .hero-content { text-align:center; display:flex; flex-direction:column; align-items:center; }
   .hero-desc { margin-left:auto; margin-right:auto; }
   .hero-actions { justify-content:center; }
@@ -924,13 +1005,29 @@ footer {
   .faq-left .section-title { text-align:center; }
   .faq-left .section-sub { text-align:center; margin:0 auto; }
   
-  .services-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
-  .service-card { padding:18px 16px; }
-  .service-card h3 { font-size:0.92rem; }
-  .service-card p { font-size:0.78rem; line-height:1.45; margin-bottom:10px; }
-  .svc-img { height:110px; }
-  .service-list li { font-size:0.72rem; }
-  .service-arrow { font-size:0.78rem; margin-top:12px; }
+  .services-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .service-card { padding:10px; position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:auto; }
+  .service-card h3 { font-size:0.85rem; margin-bottom:2px; line-height:1.25; margin-top:4px; }
+  .service-card p { font-size:0.72rem; line-height:1.35; margin-bottom:6px; }
+  .svc-img { height:140px !important; margin-bottom:6px !important; border-radius:8px; width:100%; object-fit:cover; display:block; }
+  .service-icon-wrap {
+    position:absolute !important;
+    top:16px !important;
+    left:16px !important;
+    width:30px !important;
+    height:30px !important;
+    font-size:0.95rem !important;
+    margin:0 !important;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,0.92) !important;
+    backdrop-filter:blur(4px);
+    border-radius:8px !important;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15) !important;
+  }
+  .service-list li { font-size:0.7rem; }
+  .service-arrow { font-size:0.72rem; margin-top:2px; display:inline-block; }
+  .service-card .btn-primary { padding:6px 10px !important; font-size:0.75rem !important; margin-top:6px !important; border-radius:50px; text-align:center; }
 
   .appliances-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
   .appliance-card h3 { font-size:0.92rem; }
@@ -950,12 +1047,16 @@ footer {
   .step-card { padding:14px 10px; }
   .step-card h3 { font-size:0.88rem; }
   .step-card p { font-size:0.74rem; line-height:1.4; }
-  .step-lottie-wrap { width:64px; height:64px; }
-  .step-lottie-wrap lottie-player { width:48px !important; height:48px !important; }
+  .step-lottie-wrap { width:64px; height:64px; display:flex; align-items:center; justify-content:center; }
+  .step-lottie-wrap lottie-player { width:48px !important; height:48px !important; display:block; margin:0 auto; }
 
   .form-row { grid-template-columns:1fr; }
   .footer-grid { grid-template-columns:1fr; gap:24px; }
-  .cta-inner { flex-direction:column; }
+  .cta-inner { flex-direction:column !important; align-items:center !important; text-align:center !important; }
+  .cta-text { text-align:center !important; }
+  .cta-text h2 { text-align:center !important; }
+  .cta-text p { text-align:center !important; }
+  .cta-actions { justify-content:center !important; width:100% !important; }
   .hero-stats { flex-wrap:wrap !important; gap:14px; justify-content:center; }
   .stat { min-width:40%; }
   .stat:not(:last-child)::after { display:none; }
@@ -1042,9 +1143,8 @@ footer {
     <div class="hero-img-wrap">
       <!-- Technician servicing AC unit -->
       <img class="hero-img-main"
-        src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80&fit=crop"
-        alt="AC technician servicing air conditioner"
-        onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&fit=crop'">
+        src="home_banner_image.webp"
+        alt="AC technician servicing air conditioner">
 
       <!-- Live Technician Status Card -->
       <div class="live-status-card">
@@ -1112,23 +1212,37 @@ footer {
   </div>
   <div class="brands-track-wrap">
     <div class="brands-track">
-      <span class="brand-item">❄️ Daikin</span><span class="brand-item">🔴 LG</span>
-      <span class="brand-item">🌌 Samsung</span><span class="brand-item">⚡ Voltas</span>
-      <span class="brand-item">🌀 Blue Star</span><span class="brand-item">🌡️ Carrier</span>
-      <span class="brand-item">🏔️ Hitachi</span><span class="brand-item">🌀 Whirlpool</span>
-      <span class="brand-item">☘️ Godrej</span><span class="brand-item">🌊 Panasonic</span>
-      <span class="brand-item">💎 Haier</span><span class="brand-item">🌟 O General</span>
-      <span class="brand-item">💎 Mitsubishi</span><span class="brand-item">🫧 IFB</span>
-      <span class="brand-item">🔧 Bosch</span>
+      <span class="brand-item"><img src="logos/daikin.webp" alt="Daikin" style="height: 18px; width: auto;"> Daikin</span>
+      <span class="brand-item"><img src="logos/lg.webp" alt="LG" style="height: 18px; width: auto;"> LG</span>
+      <span class="brand-item"><img src="logos/samsung.webp" alt="Samsung" style="height: 14px; width: auto;"> Samsung</span>
+      <span class="brand-item"><img src="logos/voltas.webp" alt="Voltas" style="height: 18px; width: auto;"> Voltas</span>
+      <span class="brand-item"><img src="logos/bluestar.webp" alt="Blue Star" style="height: 18px; width: auto;"> Blue Star</span>
+      <span class="brand-item"><img src="logos/carrier.webp" alt="Carrier" style="height: 16px; width: auto;"> Carrier</span>
+      <span class="brand-item"><img src="logos/hitachi.jpg" alt="Hitachi" style="height: 16px; width: auto;"> Hitachi</span>
+      <span class="brand-item"><img src="logos/whirlpool.webp" alt="Whirlpool" style="height: 18px; width: auto;"> Whirlpool</span>
+      <span class="brand-item"><img src="logos/godrej.svg" alt="Godrej" style="height: 18px; width: auto;"> Godrej</span>
+      <span class="brand-item"><img src="logos/panasonic.svg" alt="Panasonic" style="height: 14px; width: auto;"> Panasonic</span>
+      <span class="brand-item"><img src="logos/haier.webp" alt="Haier" style="height: 16px; width: auto;"> Haier</span>
+      <span class="brand-item"><img src="logos/ogeneral.jpg" alt="O General" style="height: 18px; width: auto;"> O General</span>
+      <span class="brand-item"><img src="logos/mitsubishi.jpg" alt="Mitsubishi" style="height: 18px; width: auto;"> Mitsubishi</span>
+      <span class="brand-item"><img src="logos/ifb.jpg" alt="IFB" style="height: 18px; width: auto;"> IFB</span>
+      <span class="brand-item"><img src="logos/bosch.webp" alt="Bosch" style="height: 18px; width: auto;"> Bosch</span>
       <!-- duplicate -->
-      <span class="brand-item">❄️ Daikin</span><span class="brand-item">🔴 LG</span>
-      <span class="brand-item">🌌 Samsung</span><span class="brand-item">⚡ Voltas</span>
-      <span class="brand-item">🌀 Blue Star</span><span class="brand-item">🌡️ Carrier</span>
-      <span class="brand-item">🏔️ Hitachi</span><span class="brand-item">🌀 Whirlpool</span>
-      <span class="brand-item">☘️ Godrej</span><span class="brand-item">🌊 Panasonic</span>
-      <span class="brand-item">💎 Haier</span><span class="brand-item">🌟 O General</span>
-      <span class="brand-item">💎 Mitsubishi</span><span class="brand-item">🫧 IFB</span>
-      <span class="brand-item">🔧 Bosch</span>
+      <span class="brand-item"><img src="logos/daikin.webp" alt="Daikin" style="height: 18px; width: auto;"> Daikin</span>
+      <span class="brand-item"><img src="logos/lg.webp" alt="LG" style="height: 18px; width: auto;"> LG</span>
+      <span class="brand-item"><img src="logos/samsung.webp" alt="Samsung" style="height: 14px; width: auto;"> Samsung</span>
+      <span class="brand-item"><img src="logos/voltas.webp" alt="Voltas" style="height: 18px; width: auto;"> Voltas</span>
+      <span class="brand-item"><img src="logos/bluestar.webp" alt="Blue Star" style="height: 18px; width: auto;"> Blue Star</span>
+      <span class="brand-item"><img src="logos/carrier.webp" alt="Carrier" style="height: 16px; width: auto;"> Carrier</span>
+      <span class="brand-item"><img src="logos/hitachi.webp" alt="Hitachi" style="height: 16px; width: auto;"> Hitachi</span>
+      <span class="brand-item"><img src="logos/whirlpool.webp" alt="Whirlpool" style="height: 18px; width: auto;"> Whirlpool</span>
+      <span class="brand-item"><img src="logos/godrej.svg" alt="Godrej" style="height: 18px; width: auto;"> Godrej</span>
+      <span class="brand-item"><img src="logos/panasonic.svg" alt="Panasonic" style="height: 14px; width: auto;"> Panasonic</span>
+      <span class="brand-item"><img src="logos/haier.webp" alt="Haier" style="height: 16px; width: auto;"> Haier</span>
+      <span class="brand-item"><img src="logos/ogeneral.webp" alt="O General" style="height: 18px; width: auto;"> O General</span>
+      <span class="brand-item"><img src="logos/mitsubishi.webp" alt="Mitsubishi" style="height: 18px; width: auto;"> Mitsubishi</span>
+      <span class="brand-item"><img src="logos/ifb.webp" alt="IFB" style="height: 18px; width: auto;"> IFB</span>
+      <span class="brand-item"><img src="logos/bosch.webp" alt="Bosch" style="height: 18px; width: auto;"> Bosch</span>
     </div>
   </div>
 </div>
@@ -1156,7 +1270,16 @@ footer {
         position: relative;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+        width: 100%;
         gap: 10px;
+      }
+      .services-cat-title::before {
+        content: '';
+        height: 3px;
+        width: 40px;
+        background: var(--cool);
+        border-radius: 2px;
       }
       .services-cat-title::after {
         content: '';
@@ -1309,9 +1432,6 @@ footer {
           justify-content: center;
           width: 100%;
         }
-        .services-cat-title::after {
-          display: none;
-        }
         .modal-content {
           padding: 20px;
         }
@@ -1330,9 +1450,8 @@ footer {
         <div class="services-grid">
           <div class="service-card" data-cat="ac">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=600&q=75&fit=crop"
-              alt="Split AC installation" loading="lazy"
-              onerror="this.style.display='none'">
+              src="split_window_ac.webp"
+              alt="Split AC installation" loading="lazy">
             <div class="service-icon-wrap">🌬️</div>
             <h3>Split &amp; Window Air Conditioners</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1341,7 +1460,7 @@ footer {
               <span class="det-title">Split &amp; Window Air Conditioners</span>
               <span class="det-desc">Complete residential AC service — installation, gas refills, PCB repairs and deep cleaning for all brands.</span>
               <span class="det-icon">🌬️</span>
-              <span class="det-img">https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=600&q=75&fit=crop</span>
+              <span class="det-img">split_window_ac.webp</span>
               <ul class="det-list">
                 <li>Installation &amp; uninstallation</li>
                 <li>Gas refill &amp; leakage repair</li>
@@ -1354,9 +1473,8 @@ footer {
 
           <div class="service-card" data-cat="ac">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&q=75&fit=crop"
-              alt="Office AC cassette unit" loading="lazy"
-              onerror="this.style.display='none'">
+              src="cassette_ac.webp"
+              alt="Office AC cassette unit" loading="lazy">
             <div class="service-icon-wrap">🏢</div>
             <h3>Cassette Air Conditioners</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1365,7 +1483,7 @@ footer {
               <span class="det-title">Cassette Air Conditioners</span>
               <span class="det-desc">Ceiling-mounted cassette AC installation, drainage cleaning and cooling optimization for offices &amp; homes.</span>
               <span class="det-icon">🏢</span>
-              <span class="det-img">https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&q=75&fit=crop</span>
+              <span class="det-img">cassette_ac.webp</span>
               <ul class="det-list">
                 <li>Ceiling-mounted installation</li>
                 <li>Drainage system cleaning</li>
@@ -1377,9 +1495,8 @@ footer {
 
           <div class="service-card" data-cat="ac">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75&fit=crop"
-              alt="Commercial VRV AC system office" loading="lazy"
-              onerror="this.style.display='none'">
+              src="VRV_VRF.webp"
+              alt="Commercial VRV AC system office" loading="lazy">
             <div class="service-icon-wrap">🏨</div>
             <h3>VRV / VRF Centralized AC</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1388,7 +1505,7 @@ footer {
               <span class="det-title">VRV / VRF Centralized AC</span>
               <span class="det-desc">Centralized HVAC cooling design, installation, repairs, and annual maintenance for multi-floor commercial premises.</span>
               <span class="det-icon">🏨</span>
-              <span class="det-img">https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75&fit=crop</span>
+              <span class="det-img">VRV_VRF.webp</span>
               <ul class="det-list">
                 <li>System design &amp; full installation</li>
                 <li>Centralized cooling setup</li>
@@ -1407,9 +1524,8 @@ footer {
         <div class="services-grid">
           <div class="service-card" data-cat="home">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=75&fit=crop"
-              alt="Washing machine repair" loading="lazy"
-              onerror="this.style.display='none'">
+              src="washing_machine_repair.webp"
+              alt="Washing machine repair" loading="lazy">
             <div class="service-icon-wrap">🫧</div>
             <h3>Washing Machine Repair</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1418,7 +1534,7 @@ footer {
               <span class="det-title">Washing Machine Repair</span>
               <span class="det-desc">Front-load and top-load washing machine repairs, installation and PCB servicing for all brands.</span>
               <span class="det-icon">🫧</span>
-              <span class="det-img">https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=75&fit=crop</span>
+              <span class="det-img">washing_machine_repair.webp</span>
               <ul class="det-list">
                 <li>Installation of new units</li>
                 <li>Keep motor running smoothly</li>
@@ -1431,9 +1547,8 @@ footer {
 
           <div class="service-card" data-cat="home">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=600&q=75&fit=crop"
-              alt="Refrigerator repair" loading="lazy"
-              onerror="this.style.display='none'">
+              src="fridge_repair.webp"
+              alt="Refrigerator repair" loading="lazy">
             <div class="service-icon-wrap">🧊</div>
             <h3>Refrigerator Repair</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1442,7 +1557,7 @@ footer {
               <span class="det-title">Refrigerator Repair</span>
               <span class="det-desc">All fridge brands — cooling issues, gas refills, compressor and thermostat repairs done right.</span>
               <span class="det-icon">🧊</span>
-              <span class="det-img">https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=600&q=75&fit=crop</span>
+              <span class="det-img">fridge_repair.webp</span>
               <ul class="det-list">
                 <li>Cooling issue diagnosis</li>
                 <li>Gas refill &amp; leak repair</li>
@@ -1455,18 +1570,17 @@ footer {
 
           <div class="service-card" data-cat="home">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=75&fit=crop"
-              alt="Microwave oven repair" loading="lazy"
-              onerror="this.style.display='none'">
-            <div class="service-icon-wrap">📡</div>
+              src="microwave_repair.webp"
+              alt="Microwave oven repair" loading="lazy">
+            <div class="service-icon-wrap">♨️</div>
             <h3>Microwave Oven Repair</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
             <a href="#contact" class="btn-primary" style="margin-top:14px; text-align:center; display:block; padding:8px 16px; font-size:0.85rem; border-radius:50px; font-weight:700;">Book Now</a>
             <div class="service-details-hidden" style="display:none;">
               <span class="det-title">Microwave Oven Repair</span>
               <span class="det-desc">Expert repair for all solo and convection microwave brands — fast, reliable, with warranty.</span>
-              <span class="det-icon">📡</span>
-              <span class="det-img">https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=75&fit=crop</span>
+              <span class="det-icon">♨️</span>
+              <span class="det-img">microwave_repair.webp</span>
               <ul class="det-list">
                 <li>Magnetron replacement</li>
                 <li>Heating issue fixing</li>
@@ -1479,9 +1593,8 @@ footer {
 
           <div class="service-card" data-cat="home">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=75&fit=crop"
-              alt="Water heater geyser repair" loading="lazy"
-              onerror="this.style.display='none'">
+              src="geyser_repairing.webp"
+              alt="Water heater geyser repair" loading="lazy">
             <div class="service-icon-wrap">🚿</div>
             <h3>Geyser &amp; Water Heater</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1490,7 +1603,7 @@ footer {
               <span class="det-title">Geyser &amp; Water Heater</span>
               <span class="det-desc">Geyser installation, heating element replacement, leakage repair and descaling services.</span>
               <span class="det-icon">🚿</span>
-              <span class="det-img">https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=75&fit=crop</span>
+              <span class="det-img">geyser_repairing.webp</span>
               <ul class="det-list">
                 <li>New unit installation</li>
                 <li>Heating element replacement</li>
@@ -1509,9 +1622,8 @@ footer {
         <div class="services-grid">
           <div class="service-card" data-cat="common">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75&fit=crop"
-              alt="Appliance repair service" loading="lazy"
-              onerror="this.style.display='none'">
+              src="general_repair.webp"
+              alt="Appliance repair service" loading="lazy">
             <div class="service-icon-wrap">🔧</div>
             <h3>General Repair Services</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1520,7 +1632,7 @@ footer {
               <span class="det-title">General Repair Services</span>
               <span class="det-desc">End-to-end fault diagnosis and emergency repairs using genuine spare parts for all appliances.</span>
               <span class="det-icon">🔧</span>
-              <span class="det-img">https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75&fit=crop</span>
+              <span class="det-img">general_repair.webp</span>
               <ul class="det-list">
                 <li>Comprehensive fault diagnosis</li>
                 <li>Genuine spare parts replacement</li>
@@ -1531,9 +1643,8 @@ footer {
 
           <div class="service-card" data-cat="common">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75&fit=crop"
-              alt="AC maintenance and cleaning" loading="lazy"
-              onerror="this.style.display='none'">
+              src="maintenance_services.webp"
+              alt="AC maintenance and cleaning" loading="lazy">
             <div class="service-icon-wrap">📅</div>
             <h3>Maintenance Services</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1542,7 +1653,7 @@ footer {
               <span class="det-title">Maintenance Services</span>
               <span class="det-desc">Scheduled servicing, preventive maintenance and deep cleaning to extend appliance life and efficiency.</span>
               <span class="det-icon">📅</span>
-              <span class="det-img">https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75&fit=crop</span>
+              <span class="det-img">maintenance_services.webp</span>
               <ul class="det-list">
                 <li>Regular scheduled servicing</li>
                 <li>Deep cleaning &amp; tuning</li>
@@ -1553,9 +1664,8 @@ footer {
 
           <div class="service-card" data-cat="common">
             <img class="svc-img"
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75&fit=crop"
-              alt="AC installation team at work" loading="lazy"
-              onerror="this.style.display='none'">
+              src="installation_services.webp"
+              alt="AC installation team at work" loading="lazy">
             <div class="service-icon-wrap">📦</div>
             <h3>Installation Services</h3>
             <span class="service-arrow" onclick="openServiceModal(this)">Know More →</span>
@@ -1564,7 +1674,7 @@ footer {
               <span class="det-title">Installation Services</span>
               <span class="det-desc">New unit installation and re-installation for home-shifting needs across Delhi NCR.</span>
               <span class="det-icon">📦</span>
-              <span class="det-img">https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75&fit=crop</span>
+              <span class="det-img">installation_services.webp</span>
               <ul class="det-list">
                 <li>New unit installation</li>
                 <li>Re-installation (home shifting)</li>
@@ -1688,7 +1798,7 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=600&q=75&fit=crop"
+            src="split_window_ac.webp"
             alt="Air conditioning unit" loading="lazy">
         </div>
         <div class="app-body">
@@ -1704,7 +1814,7 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=75&fit=crop"
+            src="washing_machine_repair.webp"
             alt="Washing machine" loading="lazy">
         </div>
         <div class="app-body">
@@ -1720,7 +1830,7 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1571175452281-04a27f614740?w=600&q=75&fit=crop"
+            src="fridge_repair.webp"
             alt="Refrigerator" loading="lazy">
         </div>
         <div class="app-body">
@@ -1736,12 +1846,12 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&q=75&fit=crop"
+            src="microwave_repair.webp"
             alt="Microwave oven" loading="lazy">
         </div>
         <div class="app-body">
           <div class="app-emoji-row">
-            <div class="app-emoji">📡</div>
+            <div class="app-emoji">♨️</div>
             <span class="app-tag">Kitchen</span>
           </div>
           <h3>Microwave Ovens</h3>
@@ -1752,7 +1862,7 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=75&fit=crop"
+            src="geyser_repairing.webp"
             alt="Water heater geyser" loading="lazy">
         </div>
         <div class="app-body">
@@ -1768,7 +1878,7 @@ footer {
       <div class="appliance-card">
         <div class="appliance-img-wrap">
           <img class="app-img"
-            src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=75&fit=crop"
+            src="all_brands.webp"
             alt="Brand service technician" loading="lazy">
         </div>
         <div class="app-body">
@@ -1996,7 +2106,7 @@ footer {
         <p class="section-sub">Can't find your answer? Reach us directly — available 7 days a week.</p>
         <a href="#contact" class="btn-primary" style="margin-top:24px;">Ask Us Anything</a>
         <div style="margin-top:32px;padding:22px;background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=480&q=75&fit=crop"
+          <img src="service_team.webp"
             style="width:100%;border-radius:10px;margin-bottom:14px;display:block;" alt="Our service team" loading="lazy">
           <div style="font-weight:800;color:var(--midnight);font-size:0.95rem;margin-bottom:4px;">Our certified team</div>
           <div style="font-size:0.84rem;color:var(--muted);">Background-verified, trained technicians on every job.</div>
@@ -2070,7 +2180,7 @@ footer {
         </div>
 
         <div style="margin-top:18px;border-radius:var(--radius);overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=75&fit=crop"
+          <img src="contact_technician.webp"
             style="width:100%;height:170px;object-fit:cover;display:block;" alt="AC technician" loading="lazy">
           <div style="background:linear-gradient(135deg,var(--midnight),#124d76);padding:20px;display:flex;align-items:center;gap:14px;">
             <div style="font-size:1.8rem;">💬</div>
